@@ -31,4 +31,12 @@ jobs:
           sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' /opt/sonar-scanner/bin/sonar-scanner
           echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH
 
+      - name: Wait for sonarqube to be up
+        run: |
+          while [[ "$(curl http://localhost:9000/api/system/status | jq -r '.status')" != "UP" ]]
+          do
+            sleep(5)
+          done
+        timeout-minutes: 10
+
       - run: sonar-scanner
