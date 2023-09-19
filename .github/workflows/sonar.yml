@@ -23,6 +23,6 @@ jobs:
           rm sonarscanner.zip && \
           mv sonar-scanner-4.8.0.2856-linux /opt/sonar-scanner && \
           sed -i 's/use_embedded_jre=true/use_embedded_jre=false/g' /opt/sonar-scanner/bin/sonar-scanner
-          export PATH="$PATH:/opt/sonar-scanner/bin"
+          echo "/opt/sonar-scanner/bin" >> $GITHUB_PATH
 
       - run: sonar-scanner
