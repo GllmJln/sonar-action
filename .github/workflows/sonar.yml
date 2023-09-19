@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     services:
-      image: "sonarqube:9.9.2:community"
+      image: "sonarqube:9.9.2-community"
       ports: "9000:9000"
 
     steps:
